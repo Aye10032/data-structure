@@ -4,7 +4,7 @@
             "name": "Win32",
             "intelliSenseMode": "clang-x64",
             "includePath": [
-                "${workspaceFolder}",
+                "${workspaceFolder}/**",
                 "D:\\TDM-GCC-64\\lib\\gcc\\x86_64-w64-mingw32\\9.2.0\\include\\c++",
                 "D:\\TDM-GCC-64\\lib\\gcc\\x86_64-w64-mingw32\\9.2.0\\include\\c++\\x86_64-w64-mingw32",
                 "D:\\TDM-GCC-64\\lib\\gcc\\x86_64-w64-mingw32\\9.2.0\\include\\c++\\backward",
@@ -19,6 +19,8 @@
                 "__cdecl=__attribute__((__cdecl__))"
             ],
             "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
                 "path": [
                     "${workspaceFolder}",
                     "D:\\TDM-GCC-64\\lib\\gcc\\x86_64-w64-mingw32\\9.2.0\\include\\c++",
@@ -29,8 +31,6 @@
                     "D:\\TDM-GCC-64\\lib\\gcc\\x86_64-w64-mingw32\\9.2.0\\include-fixed"
                 ]
             },
-            "limitSymbolsToIncludedHeaders": true,
-            "databaseFilename": "",
             "compilerPath": "D:\\TDM-GCC-64\\bin\\gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17"

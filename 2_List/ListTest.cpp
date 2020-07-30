@@ -9,7 +9,7 @@ int main()
 
     InitList(L);
     bool flag = ListInsert(L, 1, 1);
-    printf("%b", flag);
+    printf("%d", flag);
 
     system("pause");
 }

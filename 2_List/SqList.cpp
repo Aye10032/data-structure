@@ -6,6 +6,8 @@
 int InitList(SqList &L)
 {
     L.data = (ElemType *)malloc(sizeof(ElemType) * InitSize);
+
+    return 0;
 }
 
 int Length(SqList L)

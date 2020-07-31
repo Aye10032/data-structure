@@ -8,7 +8,7 @@
             "command": "g++",
             "args": [
                 "-ggdb",
-                "'${file}'","'${fileDirname}\\SqList.cpp'",
+                "'${file}'",
                 "--std=c++11",
                 "-o",
                 "'${fileDirname}\\${fileBasenameNoExtension}.exe'"

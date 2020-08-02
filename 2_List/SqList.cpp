@@ -51,7 +51,18 @@ bool ListDelet(SqList &L, int i, ElemType &e)
     return true;
 }
 
-void printList(SqList L)
+int LocateElem(SqList L, ElemType e){
+    for (int i = 0; i < L.length; i++)
+    {
+        if (L.data[i] == e)
+        {
+            return i + 1;
+        }
+    }
+    return 0;
+}
+
+    void printList(SqList L)
 {
     cout << "\n[";
     for (int j = 0; j < L.length; j++)
@@ -81,6 +92,8 @@ int main()
     ListDelet(L, 3, a);
     cout << a;
     printList(L);
+
+    cout << LocateElem(L, 4) << endl;
 
     system("pause");
 }

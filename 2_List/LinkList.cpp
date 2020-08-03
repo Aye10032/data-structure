@@ -56,12 +56,39 @@ LinkList List_TailInsert(LinkList &L)
     return L;
 }
 
+//按序号查找
+LNode *getElem(LinkList L, int i)
+{
+    int j = 1;
+    LNode *p = L->next; //头结点的下一个结点
+
+    if (i == 0)
+    {
+        return L;
+    }
+    if (i < 1)
+    {
+        return NULL;
+    }
+
+    while (p && j < i) //下一个结点不为空（即链表没有结束），同时没有到目标位置
+    {
+        p = p->next;
+        j++;
+    }
+
+    return p;
+}
+
 int main()
 {
 
     LinkList L;
     // List_HeadInsert(L);
     List_TailInsert(L);
+
+    LNode *s = getElem(L, 3);
+    cout << "No.3 is: " << s->data << endl;
 
     system("pause");
 }

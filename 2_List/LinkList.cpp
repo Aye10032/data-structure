@@ -92,6 +92,18 @@ LNode *LocateElem(LinkList L, ElemType e)
     return p;
 }
 
+// 插入节点
+int InsertElem(LinkList L, int i, int x)
+{
+    LNode *p, *s;
+    p = getElem(L, i - 1);
+    s->data = x;
+    s->next = p->next;
+    p->next = s;
+
+    return 0;
+}
+
 int main()
 {
 
@@ -104,6 +116,10 @@ int main()
 
     s = LocateElem(L, 3);
     cout << "3 is at" << s->data << endl;
+
+    InsertElem(L, 3, 10);
+    s = getElem(L, 3);
+    cout << "No.3 is: " << s->data << endl;
 
     system("pause");
 }

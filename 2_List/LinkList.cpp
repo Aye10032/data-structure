@@ -71,10 +71,22 @@ LNode *getElem(LinkList L, int i)
         return NULL;
     }
 
-    while (p && j < i) //下一个结点不为空（即链表没有结束），同时没有到目标位置
+    while (p != NULL && j < i) //下一个结点不为空（即链表没有结束），同时没有到目标位置
     {
         p = p->next;
         j++;
+    }
+
+    return p;
+}
+
+//按值查找
+LNode *LocateElem(LinkList L, ElemType e)
+{
+    LNode *p = L->next;
+    while (p->data != e && p != NULL)
+    {
+        p = p->next;
     }
 
     return p;
@@ -89,6 +101,9 @@ int main()
 
     LNode *s = getElem(L, 3);
     cout << "No.3 is: " << s->data << endl;
+
+    s = LocateElem(L, 3);
+    cout << "3 is at" << s->data << endl;
 
     system("pause");
 }

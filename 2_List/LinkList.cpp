@@ -104,6 +104,30 @@ int InsertElem(LinkList L, int i, int x)
     return 0;
 }
 
+//删除结点
+int DeletElem(LinkList &L, int i)
+{
+    LNode *p, *q;
+    p = getElem(L, i - 1);
+    q = p->next;
+    p->next = q->next;
+    free(q);
+
+    return 0;
+}
+
+void printlist(LinkList L)
+{
+    LNode *p = L->next;
+
+    while (p)
+    {
+        cout << p->data << " ";
+        p = p->next;
+    }
+    cout << endl;
+}
+
 int main()
 {
 
@@ -111,15 +135,19 @@ int main()
     // List_HeadInsert(L);
     List_TailInsert(L);
 
+    printlist(L);
+
     LNode *s = getElem(L, 3);
     cout << "No.3 is: " << s->data << endl;
 
-    s = LocateElem(L, 3);
-    cout << "3 is at" << s->data << endl;
+    // s = LocateElem(L, 3);
+    // cout << "3 is at" << s->data << endl;
 
     InsertElem(L, 3, 10);
-    s = getElem(L, 3);
-    cout << "No.3 is: " << s->data << endl;
+    printlist(L);
+
+    DeletElem(L, 3);
+    printlist(L);
 
     system("pause");
 }

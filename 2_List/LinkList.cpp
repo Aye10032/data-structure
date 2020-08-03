@@ -35,11 +35,33 @@ LinkList List_HeadInsert(LinkList &L)
     return L;
 }
 
+// 尾插法
+LinkList List_TailInsert(LinkList &L)
+{
+    int n, x;
+    L = (LinkList)malloc(sizeof(LNode));
+    LNode *s, *r = L;
 
-int main(){
+    cin >> n >> x;
+    for (int i = 0; i < n; i++)
+    {
+        s = (LNode *)malloc(sizeof(LNode));
+        s->data = x;
+        r->next = s;
+        r = s;
+        cout << "new node:" << endl;
+        cin >> x;
+    }
+    r->next = NULL;
+    return L;
+}
+
+int main()
+{
 
     LinkList L;
-    List_HeadInsert(L);
+    // List_HeadInsert(L);
+    List_TailInsert(L);
 
     system("pause");
 }

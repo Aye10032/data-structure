@@ -63,6 +63,24 @@ int LocateElem(SqList L, ElemType e)
     return 0;
 }
 
+//最值
+int getMax(SqList L){
+    int max, min;
+    max, min = L.data[0];
+    for (int i = 0; i < L.length; i++)
+    {
+        if (L.data[i] > max)
+        {
+            max = L.data[i];
+        }
+        if (L.data[i] < min)
+        {
+            min = L.data[i];
+        }
+    }
+    return max;
+}
+
 void printList(SqList L)
 {
     cout << "\n[";
@@ -84,17 +102,19 @@ int main()
     }
     printList(L);
 
-    ListInsert(L, 2, 10);
+    ListInsert(L, 2, 20);
     bool flag = ListInsert(L, 1, 1);
     cout << flag;
     printList(L);
 
     int a;
-    ListDelet(L, 3, a);
+    ListDelet(L, 2, a);
     cout << a;
     printList(L);
 
     cout << LocateElem(L, 4) << endl;
+
+    cout << getMax(L) << endl;
 
     system("pause");
 }

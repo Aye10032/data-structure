@@ -42,15 +42,15 @@ LinkList List_TailInsert(LinkList &L)
     L = (LinkList)malloc(sizeof(LNode));
     LNode *s, *r = L;
 
-    cin >> n >> x;
+    cin >> n;
     for (int i = 0; i < n; i++)
     {
+        cin >> x;
         s = (LNode *)malloc(sizeof(LNode));
         s->data = x;
         r->next = s;
         r = s;
         cout << "new node:" << endl;
-        cin >> x;
     }
     r->next = NULL;
     return L;
@@ -116,6 +116,29 @@ int DeletElem(LinkList &L, int i)
     return 0;
 }
 
+int getMax(LinkList L)
+{
+    int max, min;
+    LNode *p = L->next;
+
+    max, min = p->data;
+
+    while (p != NULL)
+    {
+        if (p->data > max)
+        {
+            max = p->data;
+        }
+        if (p->data < min)
+        {
+            min = p->data;
+        }
+        p = p->next;
+    }
+
+    return max;
+}
+
 void printlist(LinkList L)
 {
     LNode *p = L->next;
@@ -146,8 +169,10 @@ int main()
     InsertElem(L, 3, 10);
     printlist(L);
 
-    DeletElem(L, 3);
+    DeletElem(L, 2);
     printlist(L);
+
+    cout << getMax(L) << endl;
 
     system("pause");
 }

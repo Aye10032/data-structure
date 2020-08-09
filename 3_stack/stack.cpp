@@ -19,10 +19,25 @@ void InitStack(Stack &s)
     s.top = -1; //初始化栈顶指针
 }
 
+//判断栈空
+bool StackEmpty(Stack s)
+{
+    if (s.top == -1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 int main()
 {
     Stack s;
     InitStack(s);
+
+    cout << StackEmpty(s) << endl;
 
     system("pause");
 }

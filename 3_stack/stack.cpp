@@ -33,13 +33,29 @@ bool StackEmpty(Stack s)
 }
 
 //进栈
-bool Push(Stack &s, ElemType e){
-    if (s.top == MaxSize -1) //栈满
+bool Push(Stack &s, ElemType e)
+{
+    if (s.top == MaxSize - 1) //栈满
     {
         return false;
-    }else
+    }
+    else
     {
-        s.data[++s.top] = e;
+        s.data[++s.top] = e; //先自加，再赋值
+        return true;
+    }
+}
+
+//出栈
+bool Pop(Stack &s, ElemType &e)
+{
+    if (s.top == -1) //栈不为空
+    {
+        return false;
+    }
+    else
+    {
+        e = s.data[s.top--]; //先赋值，再自减
         return true;
     }
 }
@@ -51,9 +67,14 @@ int main()
 
     cout << StackEmpty(s) << endl;
 
-    Push(s, 1);
+    Push(s, 10);
 
     cout << StackEmpty(s) << endl;
+
+    ElemType a;
+    Pop(s, a);
+
+    cout << a << endl;
 
     system("pause");
 }

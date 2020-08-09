@@ -60,6 +60,18 @@ bool Pop(Stack &s, ElemType &e)
     }
 }
 
+//读栈顶操作
+bool getTop(Stack s, ElemType &e){
+    if (s.top == -1)
+    {
+        return false;
+    }else
+    {
+        e = s.data[s.top];
+        return true;
+    }
+}
+
 int main()
 {
     Stack s;
@@ -74,6 +86,10 @@ int main()
     ElemType a;
     Pop(s, a);
 
+    cout << a << endl;
+
+    Push(s, 12);
+    getTop(s, a);
     cout << a << endl;
 
     system("pause");

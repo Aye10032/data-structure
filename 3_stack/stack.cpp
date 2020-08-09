@@ -32,10 +32,26 @@ bool StackEmpty(Stack s)
     }
 }
 
+//进栈
+bool Push(Stack &s, ElemType e){
+    if (s.top == MaxSize -1) //栈满
+    {
+        return false;
+    }else
+    {
+        s.data[++s.top] = e;
+        return true;
+    }
+}
+
 int main()
 {
     Stack s;
     InitStack(s);
+
+    cout << StackEmpty(s) << endl;
+
+    Push(s, 1);
 
     cout << StackEmpty(s) << endl;
 

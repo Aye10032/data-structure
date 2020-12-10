@@ -49,11 +49,25 @@ void PreOrder(BiTree T)
     }
 }
 
+//中序遍历
+void InOrder(BiTree T)
+{
+    if (T != NULL)
+    {
+        InOrder(T->lchild);
+        cout << T->data << endl;
+        InOrder(T->rchild);
+    }
+}
+
 int main()
 {
     BiTree Tree;
     init(&Tree);
 
+    cout << "PreOrder:" << endl;
     PreOrder(Tree);
+    cout << "InOrder:" << endl;
+    InOrder(Tree);
     system("pause");
 }

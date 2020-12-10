@@ -60,6 +60,17 @@ void InOrder(BiTree T)
     }
 }
 
+//后序遍历
+void PostOrder(BiTree T)
+{
+    if (T != NULL)
+    {
+        InOrder(T->lchild);
+        InOrder(T->rchild);
+        cout << T->data << endl;
+    }
+}
+
 int main()
 {
     BiTree Tree;
@@ -69,5 +80,7 @@ int main()
     PreOrder(Tree);
     cout << "InOrder:" << endl;
     InOrder(Tree);
+    cout << "PostOrder:" << endl;
+    PostOrder(Tree);
     system("pause");
 }

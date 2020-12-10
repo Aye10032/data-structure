@@ -81,7 +81,8 @@ int main()
 
     Push(s, 10);
 
-    cout << StackEmpty(s) << endl;
+
+    cout << "now stack is: " << StackEmpty(s) << endl;
 
     ElemType a;
     Pop(s, a);

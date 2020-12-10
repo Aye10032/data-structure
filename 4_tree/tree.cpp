@@ -35,10 +35,22 @@ void init(BiTree *tree)
     (*tree)->lchild->rchild->rchild = NULL;
 }
 
+//先序遍历
+void PreOrder(BiTree T){
+    if (T != NULL)
+    {
+        cout << T->data << endl;
+        PreOrder(T->lchild);
+        PreOrder(T->rchild);
+    }
+    
+}
+
 int main()
 {
     BiTree Tree;
     init(&Tree);
 
-    
+    PreOrder(Tree);
+    system("pause");
 }

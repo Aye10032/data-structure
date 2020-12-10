@@ -26,24 +26,27 @@ void init(BiTree *tree)
     (*tree)->lchild->lchild->data = 4;
     (*tree)->lchild->rchild = (BiNode *)malloc(sizeof(BiNode));
     (*tree)->lchild->rchild->data = 5;
-    (*tree)->rchild->lchild = NULL;
+    (*tree)->rchild->lchild = (BiNode *)malloc(sizeof(BiNode));
+    (*tree)->rchild->lchild->data = 6;
     (*tree)->rchild->rchild = NULL;
 
     (*tree)->lchild->lchild->lchild = NULL;
     (*tree)->lchild->lchild->rchild = NULL;
     (*tree)->lchild->rchild->lchild = NULL;
     (*tree)->lchild->rchild->rchild = NULL;
+    (*tree)->rchild->lchild->lchild = NULL;
+    (*tree)->rchild->lchild->rchild = NULL;
 }
 
 //先序遍历
-void PreOrder(BiTree T){
+void PreOrder(BiTree T)
+{
     if (T != NULL)
     {
         cout << T->data << endl;
         PreOrder(T->lchild);
         PreOrder(T->rchild);
     }
-    
 }
 
 int main()

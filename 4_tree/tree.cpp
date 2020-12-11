@@ -65,8 +65,8 @@ void PostOrder(BiTree T)
 {
     if (T != NULL)
     {
-        InOrder(T->lchild);
-        InOrder(T->rchild);
+        PostOrder(T->lchild);
+        PostOrder(T->rchild);
         cout << T->data << endl;
     }
 }

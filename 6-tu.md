@@ -1,2 +1,171 @@
 # 6、图
 
+## 1、连通图
+
+- 对于n个顶点的**无向图**G
+
+  - 若G是连通图，则最少有n-1条边
+
+  - 若G是非连通图，则最多可能有$$C_{n-1}^{2}$$条边
+
+- 对于几个顶点的有向图G
+
+  - 若G是强连通图，则最少有n条边
+
+## 2、表示
+
+邻接矩阵
+
+```c
+#define MaxVertexNum 100 					 //顶点数目的最大值
+typedef struct{
+    char Vex [MaxVertexNum] ;				 //顶点表
+    int Edge [MaxVertexNum] [MaxVertexNum] ; //邻接矩阵，边表
+    int vexnum, arcnum;						 //图的当前顶点数和边数/弧数
+} MGraph;
+```
+
+有向图：
+
+- 出度：行
+- 入度：列
+
+邻接表法
+
+![邻接表](.gitbook/assests/邻接表.png)
+
+```c
+//"边/弧"
+typedef struct ArcNode{
+    int adivex; 			//边/弧指向哪个结点
+    struct ArcNode *next ;  //指向下一条弧的指针
+    //InfoType info; 		//边权值
+}ArcNode;
+
+//"顶点"
+typedef struct VNode{
+    VertexType data; 		//顶点信息
+    ArcNode *first;			//第一条边/弧
+}VNode,AdjList [MaxVertexNum];
+
+//用邻接表存储的图
+typedef struct{
+    AdjList vertices;
+    int vexnum, arcnum;
+}ALGraph;
+```
+
+## 3、遍历
+
+广度优先BFS
+
+- 节点入队
+- 队列非空，则将队头出队
+- 访问队头节点的相邻节点，并将之存入队尾
+- 循环操作直至队空
+
+```c
+bool visited [MAX_ VERTEX_ NUM]; // 访问标记数组
+
+void BFSTraverse(Graph G){  	//对图G进行广度优先遍历
+    for(i=0; i<G.vexnum;++i) 
+    	visited [i]=FALSE;  	//访问标记数组初始化
+    InitQueue(Q) ;				//初始化辅助队列Q
+    for( i=0; i<G.vexnum; ++i)	//从0号顶点开始遍历
+    	if(!visited[i])			//对每个连通分量调用一次BI
+    		BFS(G,i);			//vi未访问过，从vi开始BF
+}
+
+//广度优先遍历
+void BFS(Graph G,int v){		 //从顶点v出发，广度优先遍历图G 
+    visit(v);					 //访问初始顶点v
+    visited[v]=TRUE;			 //对v做已访问标记
+    Enqueue(Q,v);				 //顶点v入队列Q
+    while(!isEmpty(Q)){
+        DeQueue(Q,v);			 //顶点v出队列
+        for(w=FirstNeighbor(G, v); w>=0; w=NextNeighbor(G,v,W))
+        //检测v所有邻接点
+        if(!visited [w]){		 //w为v的尚未访问的邻接顶点
+            visit(w);			 //访问顶点w
+            visited[w]=TRUE;	 //对w做已访问标记
+            EnQueue(Q,W); 		 //顶点w入队列
+        }//if 
+    }//while
+}
+
+```
+
+深度优先DFS
+
+```c
+bool vis ited [MAX_ VERTEX_ NUM]; 	//访问标记数组
+
+void DFSTraverse(Graph G){			//对图G进行深度优先遍历
+    for(v=0; v<G.vexnum; ++v)
+    	visited[v]=FALSE;			//初始化已访问标记数据
+    for(v=0; v<G.vexnum; ++v)		//本代码中是从v=0开始遍历
+    	if( !visited[v])
+    		DFS(G,v);
+}
+
+void DFS(Graph G,int v){			//从顶点v出发，深度优先遍历图G
+    visit(v);						//访问顶点v
+    visited[v]=TRUE;				//设已访问标记
+    for (w=FirstNeighbor(G, v);W>=0;w=NextNeighor(G,v,w)
+    	if(!visited[w]){ 			//w为u的尚未访问的邻接顶点
+    		DFS(G,w);
+    	}//if
+}
+
+```
+
+## 4、最小生成树
+
+- Prim算法
+  - 每次将代价最小的顶点接入树
+- Kruskal算法
+  - 每次选择权值最小的边，连接这条边的两个节点
+
+## 5、最短路径
+
+- 从某点除法，遍历所有未确定最短路径的点，算出其距离
+- 选择未确定的点中距离最短的作为下一个遍历的目标，并将其路径设为true
+- 将距离改为从新的点出发的路径中最短的
+
+![dijkstra1](.gitbook/assests/dijkstra1.png)
+
+![dijkstra2](.gitbook/assests/dijkstra2.png)
+
+![dijkstra2](.gitbook/assests/dijkstra3.png)
+
+![dijkstra2](.gitbook/assests/dijkstra4.png)
+
+![dijkstra2](.gitbook/assests/dijkstra5.png)
+
+## 6、拓扑排序
+
+```c
+bool TopologicalSort(Graph G){
+    InitStack(S);			//初始化栈， 存储入度为0的顶点
+    for(int i=0; i<G.vexnum; i++)
+        if (indegree[i]==0)
+        	Push(S,i);		//将所有入度为0的顶点进栈
+    int count=0;			//计数，记录当前已经输出的顶点数
+    while(!IsEmpty(S)){ 	//栈不空，则存在入度为0的顶点
+        Pop(s,i);			//栈顶元素出栈
+        print[count++]=i;	//输出顶点i
+        for(p=G.vertices[i].firstarc; p; p=p->nextarc){
+            //将所有i指向的顶点的入度减1，并且将入度减为0的顶点压入栈S
+            v=p->adjvex;
+            if(!(--indegree[v]))
+            	Push(S,v);	//入度为0，则入栈
+        }
+    }//while
+    if(count<G .vexnum)
+    	return false;		//排序失败，有向图中有回路
+    else
+    	return true;		//拓扑排序成功
+}
+
+```
+

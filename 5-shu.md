@@ -198,3 +198,24 @@ void visit(ThreadNode *q) {
 
 - 权值最小的两个组成兄弟
 - 根节点的权值等于两个孩子相加
+
+#### 红黑树
+
+- 结点只有两种颜色
+- 根结点是黑色的
+- 叶结点（失败结点、NULL结点）是黑色的
+- 没有两个相邻的红节点
+- 从任何一个结点到叶子节点的简单路径上黑节点的数量相同
+
+```c
+struct RBnode{
+    int key;
+    RBnode* parent;		//父节点
+    RBnode* lChild;		//左孩子
+    RBnode* rChild;		//右孩子
+    int color;			//结点颜色
+}
+
+
+```
+

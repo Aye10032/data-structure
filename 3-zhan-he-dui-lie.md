@@ -36,3 +36,6 @@ typedef struct
 } SqQueue;
 ```
 
+
+
+队头出、队尾入

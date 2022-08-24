@@ -243,3 +243,102 @@ struct RBnode{
     - RL：右、左旋，儿换爷+染色
   - 叔叔节点为<mark style="color:red;">**红色**</mark>
     - 叔、父、爷染色，将爷节点视为新节点再继续处理
+
+
+
+## 3、并查集
+
+### 表示
+
+- 通过森林表示多个集合
+- 使用<mark style="color:purple;">**双亲表示法**</mark>来存储并查集
+  - 每个节点中保存指向双亲的“指针”
+  - 根节点指针为-1
+- **查**：向上遍历，找到根节点，判断是否在同一个集合里
+- **并**：将两棵树的根节点相连
+
+
+
+### 代码实现
+
+```c
+#define SIZE 13;
+int UFSets[SIZE];		//数组中存储每个节点的根
+
+//初始化
+void Initial(int S[]){
+    for(int i=0; i<SIZE; i++){
+        S[i]=-1;		//先全部设为单独的子集
+    }
+}
+
+//查
+int Find(int S[], int x){
+    while(S[x]>=0){
+        x = S[x];
+    }
+    return x;
+}
+
+//并
+void Union(S[], int Root1, int Root2){
+    if(Root1 != Root2){
+        S[Root2] = Root1;
+    }
+}
+```
+
+- 时间复杂度
+  - 并：O(1)
+  - 查：O(n)
+
+
+
+### 对union操作的优化
+
+- 让高度低的树成为子树
+- 根节点的绝对值表示树中的节点总数（-6、-3……）
+- 合并时将根节点相加
+
+```C
+void Union(S[], int root1, int root2){
+    if(root1 != root2){
+        if(S[root2] > S[root1]){
+            S[root1] += S[root2];	//累加节点总数
+            S[root2] = S[root1];	//小树合并到大树
+        }else{
+            S[root2] += S[root1];
+            S[root1] = S[root2];
+        }
+    }
+}
+```
+
+树高不超过$$\lfloor \log_2n \rfloor + 1$$
+
+时间复杂度
+
+- 并：O(1)
+- 查：O($$\log_2n$$)
+
+
+
+### 对find操作的优化
+
+- 在查找某个节点找到根节点后，将路径上所有的节点都直接挂到根节点下
+
+```c
+int Find(int S[], int x){
+    int root = x;
+    while(S[x]>=0){
+        root = S[x];
+    }
+    while(x != root){
+        int temp = S[x];
+        S[x] = root;
+        x = remp;
+    }
+    return root;
+}
+```
+

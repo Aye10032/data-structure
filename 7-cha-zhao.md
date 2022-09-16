@@ -18,6 +18,10 @@ int Search_ Seq (SSTable ST, ElemType key){
 
 ```
 
+无序表的ASL：$$\frac{n+1}{2}$$
+
+有序表的ASL：$$\frac{n}{2}+\frac{n}{n+1}$$
+
 ## 2、折半查找
 
 ```c
@@ -44,6 +48,8 @@ int Binary_Search(SSTable L, ElemType key){
 ```
 
 判定树高：$$\log_{2}(n+1)$$
+
+ASL：$$\log_2(n+1)-1$$
 
 ## 3、分块查找
 

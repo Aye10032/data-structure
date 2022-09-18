@@ -49,13 +49,17 @@ int Binary_Search(SSTable L, ElemType key){
 
 判定树高：$$\log_{2}(n+1)$$
 
-ASL：$$\log_2(n+1)-1$$
+查找成功的ASL：$$\log_2(n+1)-1$$
+
+
 
 ## 3、分块查找
 
 用折半查找找分块索引表（low>high时查找失败，则取现在low所指向的分块）
 
 在分块内用顺序查找
+
+设共有n条记录，则分块长度最理想应为$$\sqrt n$$
 
 ## 4、B树
 

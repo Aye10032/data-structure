@@ -70,8 +70,19 @@ int Binary_Search(SSTable L, ElemType key){
 - B树中所有结点的孩子个数的最大值称为B树的阶，对于m阶B树
 - 树中每个结点至多有m棵子树，即至多含有m-1个关键字
 - 若根结点不是终端结点，则至少有两棵子树
-- 除根结点外的所有非叶结点至少有$$\lceil m/2\rceil$$棵子树，即至少含有$$\lceil m/2-1\rceil$$个关键字
+- 除根结点外的所有非叶结点至少有$$\lceil m/2\rceil$$棵子树，即至少含有$$\lceil m/2\rceil-1$$个关键字
 - 所有的叶结点都出现在同一层次上，并且不带信息(可以视为外部结点或类似于折
+
+
+
+### 计算
+
+设树的阶数为m，有n个关键字，树高记为h
+
+- **最大树高**：$$n+1\geq2(\lceil m/2\rceil)^{h-1} \Rightarrow \text{H}_{max}\leq\log_{\lceil m/2\rceil}((n+1)/2)+1$$
+- **最小树高**：$$n\leq m ^h -1 \Rightarrow \text h_{min}\geq \log_m(n+1)$$
+
+
 
 ### 插入
 
@@ -106,6 +117,7 @@ int Binary_Search(SSTable L, ElemType key){
 
 - 记录数=叶子节点数
 - 类似于索引分块查找
+- B+树支持**顺序查找**
 
 ## 5、散列表
 

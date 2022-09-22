@@ -1,6 +1,6 @@
 # Table of contents
 
-* [408考纲](README.md)
+* [408数据结构考察范围](README.md)
 * [1、基础知识](1-ji-chu-zhi-shi.md)
 * [2、线性表](2-xian-xing-biao.md)
 * [3、栈和队列](3-zhan-he-dui-lie.md)

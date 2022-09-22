@@ -2,6 +2,9 @@
 
 ## 1、顺序查找
 
+- 顺序存储
+- 链式存储
+
 ```c
 typedef struct{
     ELemType *elem;	//动态数组基址
@@ -23,6 +26,8 @@ int Search_ Seq (SSTable ST, ElemType key){
 有序表的ASL：$$\frac{n}{2}+\frac{n}{n+1}$$
 
 ## 2、折半查找
+
+- 顺序存储（有序）
 
 ```c
 typedef struct{
@@ -62,6 +67,10 @@ int Binary_Search(SSTable L, ElemType key){
 设共有n条记录，则分块长度最理想应为$$\sqrt n$$
 
 ## 4、B树
+
+- 树结构
+  - 顺序存储
+  - 链式存储
 
 ### 定义
 
@@ -121,9 +130,26 @@ int Binary_Search(SSTable L, ElemType key){
 
 ## 5、散列表
 
-$$
-H(key)=key\ \%\ p
-$$
+- 顺序存储
+- 链式存储
+
+### 散列函数
+
+- 直接定址法：$$H(key)= a\times key+b$$
+- 除留余数法：$$H(key)=key\%p$$
+- 数字分析法
+- 平方取中法
+
+### 冲突处理
+
+- 开放定址法
+  - 线性探测法：向后推移
+  - 平方探测法（二次探测法）：推移的距离变为$$0^2、1^2、-1^2……k^2、-k^2$$
+  - 双散列法（再散列法）：使用另一个散列函数再次计算
+  - 伪随机序列法：推移的距离是伪随机序列
+- 拉链法：直接挂在链表后面
+
+### 参数
 
 表长为m，p为不大于m的质数。
 

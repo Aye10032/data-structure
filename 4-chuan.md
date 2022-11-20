@@ -19,6 +19,39 @@
 3. 视情况+1
 4. j从1开始
 
+{% hint style="info" %}
+
+例：设主串T=“abaabaabcabaabc”，模式串S=“abaabc”，采用KMP算法进行模式匹配，到匹配成功为止，进行的单个字符比较次数是多少次？
+
+- **求NEXT数组**
+
+"a"：0
+
+"ab"：0
+
+"aba"：1
+
+"abaa"：1
+
+"abaab"：2
+
+"abaabc"：0
+
+右移补-1，得：
+
+![](.gitbook/assests/KMP-NEXT.png)
+
+- **匹配**
+  - 第一趟
+    - T[5]与S[5]匹配失败
+    - NEXT[5]=2
+    - 从T[5]与S[2]开始继续匹配
+  - 第二趟
+    - 匹配成功
+- 共计10次
+
+{% endhint %}
+
 
 
 ### 求nextval数组

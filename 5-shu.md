@@ -253,9 +253,7 @@ struct RBnode{
   * 叔叔节点为<mark style="color:red;">**红色**</mark>
     * 叔、父、爷染色，将爷节点视为新节点再继续处理
 
-{% content-ref url="8-pai-xu.md" %}
-[8-pai-xu.md](8-pai-xu.md)
-{% endcontent-ref %}
+![](.gitbook/assests/红黑树插入.png)
 
 ## 3、并查集
 
